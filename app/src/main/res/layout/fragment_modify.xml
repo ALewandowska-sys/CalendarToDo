@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ModifyFragment"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/eName"
+            style="@style/style_1"
+            android:text="@string/default_name"/>
+
+        <EditText
+            android:id="@+id/eNumber"
+            style="@style/style_1"
+            android:text="@string/default_number"/>
+
+        <Button
+            android:id="@+id/bRemove"
+            style="@style/style_1"
+            android:background="@color/teal_200"
+            android:text="@string/remove_person"/>
+
+        <Button
+            android:id="@+id/bAdd"
+            style="@style/style_1"
+            android:text="@string/add_person"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:padding="40dp"/>
+
+    </LinearLayout>
+</layout>

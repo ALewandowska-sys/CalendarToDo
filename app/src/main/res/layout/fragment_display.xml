@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".DisplayFragment">
+
+        <Button
+            android:id="@+id/bDisplay"
+            style="@style/style_1"
+            android:text="@string/display_all"/>
+
+        <EditText
+            android:id="@+id/eName"
+            style="@style/style_1"
+            android:text="@string/default_name"/>
+
+        <Button
+            android:id="@+id/bDisplayName"
+            style="@style/style_1"
+            android:text="@string/display_by_name"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:background="@color/purple_200" />
+
+        <Button
+            android:id="@+id/bModify"
+            style="@style/style_1"
+            android:background="@color/teal_200"
+            android:text="@string/modify"/>
+
+    </LinearLayout>
+</layout>
