@@ -6,19 +6,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.InternalCoroutinesApi
 
-@Database(entities = [Person::class], version = 1, exportSchema = false)
-abstract class PersonDB : RoomDatabase() {
-    abstract fun personDao() : PersonDao
+@Database(entities = [Task::class], version = 1, exportSchema = false)
+abstract class TaskDB : RoomDatabase() {
+    abstract fun taskDao() : TaskDao
     @InternalCoroutinesApi
     companion object {
-        private var INSTANCE : PersonDB? = null
-        fun getPersonDB(contex: Context) : PersonDB? {
+        private var INSTANCE : TaskDB? = null
+        fun getTaskDB(contex: Context) : TaskDB? {
             if (INSTANCE == null) {
-                kotlinx.coroutines.internal.synchronized(PersonDB::class) {
+                kotlinx.coroutines.internal.synchronized(TaskDB::class) {
                     INSTANCE = Room.databaseBuilder(
-                        contex.applicationContext, PersonDB::class.java, "personDB")
+                        contex.applicationContext, TaskDB::class.java, "taskDB")
                         .fallbackToDestructiveMigration()
-// .allowMainThreadQueries()
                         .build()
                 }
             }
