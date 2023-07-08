@@ -3,7 +3,6 @@ package com.app.calendartodo.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
 
 @Entity(tableName = "task_table")
 data class Task (
@@ -18,5 +17,5 @@ data class Task (
     @ColumnInfo(name = "done_column", defaultValue = "false")
     var done: Boolean,
     @ColumnInfo(name = "data_column")
-    var data: LocalDateTime
+    var data: String
 ) { }

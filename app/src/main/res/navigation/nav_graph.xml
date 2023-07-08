@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.app.calendartodo.CalendarFragment"
+        android:name="com.app.calendartodo.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar">
         <action
@@ -18,9 +18,13 @@
     </fragment>
     <fragment
         android:id="@+id/toDoFragment"
-        android:name="com.app.calendartodo.ToDoFragment"
+        android:name="com.app.calendartodo.fragments.ToDoFragment"
         android:label="ToDoFragment"
         tools:layout="@layout/fragment_to_do">
+        <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue="" />
         <action
             android:id="@+id/action_toDoFragment_to_calendarFragment"
             app:destination="@id/toDoFragment" />
