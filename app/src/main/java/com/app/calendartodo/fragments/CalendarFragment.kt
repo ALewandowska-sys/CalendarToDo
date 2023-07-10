@@ -1,27 +1,24 @@
-package com.app.calendartodo
+package com.app.calendartodo.fragments
 
+import android.icu.util.Calendar
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.app.calendartodo.database.TaskDB
-import com.app.calendartodo.database.TaskDao
+import com.app.calendartodo.R
 import com.app.calendartodo.databinding.FragmentCalendarBinding
 import kotlinx.coroutines.InternalCoroutinesApi
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 
+@InternalCoroutinesApi
 class CalendarFragment : Fragment() {
 
     private lateinit var binding: FragmentCalendarBinding
-    private lateinit var dao: TaskDao
-    private lateinit var base: TaskDB
+    private var date = ""
 
-    @OptIn(InternalCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,8 +29,14 @@ class CalendarFragment : Fragment() {
             container, false )
 
         binding.buttonShow.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_calendarFragment_to_toDoFragment)
+            Handler(view.context.mainLooper).post {
+                val action = CalendarFragmentDirections.actionCalendarFragmentToToDoFragment()
+                action.date = date
+                view.findNavController().navigate(action)
+            }
         }
+
+
 
         val currentDate = Calendar.getInstance()
         binding.calendarView.date = currentDate.timeInMillis
@@ -42,12 +45,9 @@ class CalendarFragment : Fragment() {
             val selectedDate = Calendar.getInstance()
             selectedDate.set(year, month, dayOfMonth)
 
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val formattedDate = dateFormat.format(selectedDate.time)
-            binding.textView.text = "Wybrana data: ".plus(formattedDate)
+            date = selectedDate.time.toString()
+            binding.textView.text = "Wybrana data: $date "
         }
-        base = TaskDB.getTaskDB(requireContext())!!
-        dao = base.taskDao()
 
         return binding.root
     }

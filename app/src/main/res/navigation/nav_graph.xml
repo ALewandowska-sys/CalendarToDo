@@ -27,6 +27,6 @@
             android:defaultValue="" />
         <action
             android:id="@+id/action_toDoFragment_to_calendarFragment"
-            app:destination="@id/toDoFragment" />
+            app:destination="@id/calendarFragment" />
     </fragment>
 </navigation>
