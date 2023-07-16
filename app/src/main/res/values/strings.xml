@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">CalendarToDo</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="add_new_note">Add new note</string>
+    <string name="chooseDate">Chosen date</string>
+    <string name="zeroTaskInfo">You don\'t have any task to do!</string>
 </resources>
