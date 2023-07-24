@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.app.calendartodo.R
 import com.app.calendartodo.database.ArtAdapter
@@ -31,6 +32,8 @@ class ToDoFragment : Fragment() {
             inflater, R.layout.fragment_to_do,
             container, false )
 
+        val title = view?.findViewById<TextView>(R.id.pageTitle)
+        title?.text = getString(R.string.taskTitle)
         val args = ToDoFragmentArgs.fromBundle(requireArguments())
         val date = args.date
         setDatabase(date)
@@ -45,7 +48,7 @@ class ToDoFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.IO) {
             if (dao.getSizeToDo() == 0) {
-                binding.textView2.text = "You don't have any task to do!$date"
+                binding.textView2.text = getString(R.string.zeroTaskInfo).plus(date)
                 binding.recyclerList.visibility = View.GONE
             }
             else {

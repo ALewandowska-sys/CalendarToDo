@@ -1,0 +1,12 @@
+<resources>
+    <string name="hello_blank_fragment">Siemaneczko</string>
+    <string name="add_new_task">Dodaj zadanie</string>
+    <string name="add_new_note">Dodaj notatkę</string>
+    <string name="add_new_event">Dodaj wydarzenie</string>
+    <string name="chooseDate">Wybrana data</string>
+    <string name="zeroTaskInfo">Nie masz żadnych zadań do wykonania!</string>
+    <string name="language">Polski</string>
+    <string name="move">Idź dalej</string>
+    <string name="calendarTitle">Kalendarz</string>
+    <string name="taskTitle">Zadania</string>
+</resources>

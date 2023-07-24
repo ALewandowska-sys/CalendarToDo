@@ -5,8 +5,7 @@
     <string name="chooseDate">Chosen date</string>
     <string name="zeroTaskInfo">You don\'t have any task to do!</string>
     <string name="language">English</string>
-    <string name="move">Button</string>
-    <string name="app_name" translatable="false">Productive Calendar</string>
+    <string name="move">Move</string>
     <string name="calendarTitle">Calendar</string>
     <string name="taskTitle">Tasks</string>
     <string name="add_new_event">Add new event</string>

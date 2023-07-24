@@ -20,5 +20,7 @@
             android:layout_height="match_parent"
             app:navGraph="@navigation/nav_graph"
             app:defaultNavHost="true"/>
+
     </LinearLayout>
+
 </layout>
