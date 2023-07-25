@@ -1,43 +1,48 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+    </data>
+
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary">
 
-    <TextView
-        android:id="@+id/pageTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/teal_700"
-        android:textSize="18sp"
-        android:layout_centerInParent="true"
-        android:gravity="start" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
-
         <TextView
-            android:id="@+id/languageTextView"
+            android:id="@+id/pageTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/language"
-            android:layout_margin="10dp"
+            android:text=""
             android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/languageButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:background="@drawable/button_background_rounded"
-            android:src="@drawable/ic_language"
-            android:onClick="changeLanguage"/>
+            android:gravity="start" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/languageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/language"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/languageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background_rounded"
+                android:src="@drawable/ic_language"
+                android:onClick="changeLanguage"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
