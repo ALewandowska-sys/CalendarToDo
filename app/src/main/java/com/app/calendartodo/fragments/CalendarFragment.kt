@@ -6,7 +6,6 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -14,7 +13,11 @@ import com.app.calendartodo.R
 import com.app.calendartodo.databinding.CustomActionBarBinding
 import com.app.calendartodo.databinding.FragmentCalendarBinding
 import com.app.calendartodo.databinding.MultipleActionButtonBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
 class CalendarFragment : Fragment() {
@@ -24,6 +27,7 @@ class CalendarFragment : Fragment() {
     private lateinit var includedBindingBar: CustomActionBarBinding
     private var date = ""
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,8 +40,9 @@ class CalendarFragment : Fragment() {
         includedBindingBar = binding.customActionBar
         includedBindingBar.pageTitle.text = getString(R.string.calendarTitle)
         handleFloatingActionButton()
-
-        binding.buttonShow.setOnClickListener { view: View -> chooseDate(view) }
+        GlobalScope.launch(Dispatchers.Main) {
+            includedBindingButtons.floatingActionButtonTask.setOnClickListener { view: View -> addNote(view) }
+        }
 
         val currentDate = Calendar.getInstance()
         binding.calendarView.date = currentDate.timeInMillis
@@ -63,7 +68,7 @@ class CalendarFragment : Fragment() {
         binding.textView.text = getString(R.string.chooseDate).plus(date)
     }
 
-    private fun chooseDate(view: View){
+    private fun addNote(view: View){
         Handler(view.context.mainLooper).post {
             val action = CalendarFragmentDirections.actionCalendarFragmentToToDoFragment()
             action.date = date

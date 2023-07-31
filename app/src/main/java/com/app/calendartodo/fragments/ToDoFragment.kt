@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.app.calendartodo.R
 import com.app.calendartodo.database.ArtAdapter
 import com.app.calendartodo.database.TaskDB
 import com.app.calendartodo.database.TaskDao
+import com.app.calendartodo.databinding.CustomActionBarBinding
 import com.app.calendartodo.databinding.FragmentToDoBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -24,21 +25,39 @@ class ToDoFragment : Fragment() {
     private lateinit var base: TaskDB
     private lateinit var recyclerViewAdapter: ArtAdapter
     private lateinit var dao: TaskDao
+    private lateinit var includedBindingBar: CustomActionBarBinding
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_to_do,
-            container, false )
+            container, false
+        )
 
-        val title = view?.findViewById<TextView>(R.id.pageTitle)
-        title?.text = getString(R.string.taskTitle)
+        includedBindingBar = binding.customActionBar
+        val pageTitle = getString(R.string.taskTitle)
+
+        //still don't work
+        GlobalScope.launch(Dispatchers.Main) {
+            includedBindingBar.pageTitle.text = pageTitle
+            includedBindingBar.back.visibility = View.VISIBLE
+            includedBindingBar.back.setOnClickListener { view: View -> goBack(view) }
+        }
+
         val args = ToDoFragmentArgs.fromBundle(requireArguments())
         val date = args.date
         setDatabase(date)
 
         return binding.root
+    }
+
+    private fun goBack(view: View) {
+        view.post {
+            val action = ToDoFragmentDirections.actionToDoFragmentToCalendarFragment()
+            view.findNavController().navigate(action)
+        }
     }
 
     @OptIn(DelicateCoroutinesApi::class)

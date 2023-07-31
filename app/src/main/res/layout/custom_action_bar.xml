@@ -9,14 +9,28 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary">
 
-        <TextView
-            android:id="@+id/pageTitle"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"
             android:layout_margin="10dp"
-            android:gravity="start" />
+            android:src="@drawable/ic_back_arrow"
+            android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/pageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:gravity="start" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +49,8 @@
 
             <ImageButton
                 android:id="@+id/languageButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/button_background_rounded"
                 android:src="@drawable/ic_language"

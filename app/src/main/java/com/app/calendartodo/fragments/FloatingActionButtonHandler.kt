@@ -14,7 +14,7 @@ class FloatingActionButtonHandler (private val fragment: CalendarFragment, priva
     private val rotateClose: Animation by lazy { AnimationUtils.loadAnimation(fragment.requireContext(), R.anim.rotate_close) }
     private val moveToBottom: Animation by lazy { AnimationUtils.loadAnimation(fragment.requireContext(), R.anim.move_to_bottom) }
     private val moveFromBottom: Animation by lazy { AnimationUtils.loadAnimation(fragment.requireContext(), R.anim.move_from_bottom) }
-    private var click = false
+    private var click = true
 
 
     fun onAddButtonClicked() {
