@@ -39,7 +39,6 @@ class ToDoFragment : Fragment() {
         includedBindingBar = binding.customActionBar
         val pageTitle = getString(R.string.taskTitle)
 
-        //still don't work
         GlobalScope.launch(Dispatchers.Main) {
             includedBindingBar.pageTitle.text = pageTitle
             includedBindingBar.back.visibility = View.VISIBLE
