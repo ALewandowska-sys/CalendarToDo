@@ -12,22 +12,15 @@ import androidx.navigation.findNavController
 import com.app.calendartodo.R
 import com.app.calendartodo.databinding.CustomActionBarBinding
 import com.app.calendartodo.databinding.FragmentCalendarBinding
-import com.app.calendartodo.databinding.MultipleActionButtonBinding
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
 class CalendarFragment : Fragment() {
 
     private lateinit var binding: FragmentCalendarBinding
-    private lateinit var includedBindingButtons: MultipleActionButtonBinding
     private lateinit var includedBindingBar: CustomActionBarBinding
     private var date = ""
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,10 +32,6 @@ class CalendarFragment : Fragment() {
 
         includedBindingBar = binding.customActionBar
         includedBindingBar.pageTitle.text = getString(R.string.calendarTitle)
-        handleFloatingActionButton()
-        GlobalScope.launch(Dispatchers.Main) {
-            includedBindingButtons.floatingActionButtonTask.setOnClickListener { view: View -> addNote(view) }
-        }
 
         val currentDate = Calendar.getInstance()
         binding.calendarView.date = currentDate.timeInMillis
@@ -52,12 +41,6 @@ class CalendarFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    private fun handleFloatingActionButton() {
-        includedBindingButtons = binding.multipleActionButton
-        val handler = FloatingActionButtonHandler(this, includedBindingButtons)
-        includedBindingButtons.floatingActionButtonAdd.setOnClickListener { handler.onAddButtonClicked() }
     }
 
     private fun showChosenDate(year: Int, month: Int, dayOfMonth: Int) {

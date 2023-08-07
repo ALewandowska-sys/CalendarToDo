@@ -6,11 +6,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
 </data>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -32,11 +28,5 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_height="wrap_content"
                 android:text="" />
 
-        </LinearLayout>
-
-        <include
-            layout="@layout/multiple_action_button"
-            android:id="@+id/multiple_action_button"/>
-
-    </FrameLayout>
+    </LinearLayout>
 </layout>
